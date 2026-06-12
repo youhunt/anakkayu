@@ -64,5 +64,7 @@ $routes->group('admin', ['filter' => 'session'], static function (RouteCollectio
     $routes->post('inquiries/(:num)', 'Admin\InquiryController::update/$1');
     $routes->get('social-content', 'Admin\SocialContentController::index');
     $routes->match(['get', 'post'], 'social-content/import', 'Admin\SocialContentController::import');
+    $routes->post('social-content/(:num)/refresh', 'Admin\SocialContentController::refresh/$1');
     $routes->post('social-content/(:num)/draft', 'Admin\SocialContentController::draft/$1');
+    $routes->post('social-content/generated/(:num)/content', 'Admin\SocialContentController::content/$1');
 });

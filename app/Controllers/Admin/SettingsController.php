@@ -8,6 +8,8 @@ class SettingsController extends BaseAdminController
 {
     public function index()
     {
+        $this->authorize($this->request->getMethod() === 'POST' ? 'setting.update' : 'setting.view');
+
         $model = model(SettingModel::class);
 
         if ($this->request->getMethod() === 'POST') {

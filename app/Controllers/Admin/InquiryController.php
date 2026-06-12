@@ -8,6 +8,8 @@ class InquiryController extends BaseAdminController
 {
     public function index(): string
     {
+        $this->authorize('inquiry.view');
+
         $model = model(InquiryModel::class);
 
         return $this->render('admin/inquiries/index', [
@@ -19,6 +21,8 @@ class InquiryController extends BaseAdminController
 
     public function update(int $id)
     {
+        $this->authorize('inquiry.reply');
+
         model(InquiryModel::class)->update($id, [
             'status' => $this->request->getPost('status'),
             'admin_notes' => $this->request->getPost('admin_notes'),

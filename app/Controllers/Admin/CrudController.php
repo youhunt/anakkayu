@@ -22,9 +22,21 @@ class CrudController extends BaseAdminController
         'tag' => ['title' => 'Tag', 'route' => 'tags', 'model' => TagModel::class, 'table' => 'tags', 'name' => 'name', 'fields' => ['name', 'meta_title', 'meta_description', 'meta_keywords']],
     ];
 
+    private array $permissionModules = [
+        'content' => 'content',
+        'page' => 'page',
+        'product' => 'product',
+        'service' => 'service',
+        'portfolio' => 'portfolio',
+        'category' => 'category',
+        'tag' => 'category',
+    ];
+
     public function index(string $module): string
     {
         $config = $this->module($module);
+        $this->authorize($this->permissionFor($module, 'view'));
+
         $model = model($config['model']);
 
         return $this->render('admin/crud/index', [
@@ -49,6 +61,8 @@ class CrudController extends BaseAdminController
     public function delete(string $module, int $id)
     {
         $config = $this->module($module);
+        $this->authorize($this->permissionFor($module, 'delete'));
+
         model($config['model'])->delete($id);
 
         return redirect()->to('/admin/' . $config['route'])->with('message', $config['title'] . ' dihapus.');
@@ -59,12 +73,14 @@ class CrudController extends BaseAdminController
         $config = $this->module($module);
         $model = model($config['model']);
         $item = $id ? $model->find($id) : [];
+        $this->authorize($this->permissionFor($module, $id ? 'update' : 'create'));
 
         if ($this->request->getMethod() === 'POST') {
             $payload = $this->request->getPost($config['fields']);
             $payload = $this->normalizePayload($payload, $config);
             $payload['slug'] = ak_unique_slug($payload[$config['name']] ?? 'item', $config['table'], $id);
             if ($module === 'content' && ($payload['status'] ?? null) === 'published') {
+                $this->authorize('content.publish');
                 $payload['published_at'] = $payload['published_at'] ?: date('Y-m-d H:i:s');
             }
             $payload[$id ? 'updated_by' : 'created_by'] = auth()->id();
@@ -101,6 +117,11 @@ class CrudController extends BaseAdminController
         }
 
         return $this->modules[$module];
+    }
+
+    private function permissionFor(string $module, string $action): string
+    {
+        return ($this->permissionModules[$module] ?? $module) . '.' . $action;
     }
 
     private function categories(array $config): array

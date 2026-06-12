@@ -6,6 +6,8 @@ class DashboardController extends BaseAdminController
 {
     public function index(): string
     {
+        $this->authorize('dashboard.view');
+
         $db = db_connect();
         $tables = ['contents', 'products', 'services', 'portfolios', 'inquiries', 'categories', 'social_imports'];
         $stats = [];

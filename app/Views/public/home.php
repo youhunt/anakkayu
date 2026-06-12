@@ -104,4 +104,25 @@
         <?php endforeach ?>
     </div>
 </section>
+
+<?php if (! empty($contents)): ?>
+<section class="ak-portfolio container">
+    <div class="ak-section-head">
+        <p class="ak-eyebrow dark">Inspirasi</p>
+        <h2>Konten terbaru AnakKayu</h2>
+        <a class="ak-link" href="<?= base_url('artikel') ?>">Lihat semua artikel</a>
+    </div>
+    <div class="row g-4">
+        <?php foreach ($contents as $item): ?>
+            <div class="col-md-4">
+                <a class="ak-card" href="<?= base_url('artikel/' . $item['slug']) ?>">
+                    <img src="<?= esc($item['featured_image'] ?: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=800&q=80') ?>" alt="<?= esc($item['title']) ?>" loading="lazy">
+                    <h3><?= esc($item['title']) ?></h3>
+                    <p><?= esc($item['summary']) ?></p>
+                </a>
+            </div>
+        <?php endforeach ?>
+    </div>
+</section>
+<?php endif ?>
 <?= $this->endSection() ?>
