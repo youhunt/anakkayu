@@ -37,6 +37,10 @@
             <div class="text-nowrap">
                 <?php if (! empty($draft['content_id'])): ?>
                     <a class="btn btn-sm btn-outline-dark" href="<?= base_url('admin/contents/' . $draft['content_id'] . '/edit') ?>">Edit Artikel</a>
+                    <form class="d-inline" method="post" action="<?= base_url('admin/social-content/generated/' . $draft['id'] . '/content') ?>">
+                        <?= csrf_field() ?>
+                        <button class="btn btn-sm btn-outline-secondary">Sync Gambar</button>
+                    </form>
                 <?php else: ?>
                     <form method="post" action="<?= base_url('admin/social-content/generated/' . $draft['id'] . '/content') ?>">
                         <?= csrf_field() ?>

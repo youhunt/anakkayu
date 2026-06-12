@@ -56,6 +56,10 @@ class SocialMediaImportService
         }
 
         $model->update($importId, $payload);
+
+        if (! empty($payload['media_url'])) {
+            $this->syncConvertedContentsImage($importId, $payload['media_url']);
+        }
     }
 
     public function generateDraft(int $importId): int
@@ -79,11 +83,13 @@ class SocialMediaImportService
             throw new \RuntimeException('Draft social content tidak ditemukan.');
         }
 
+        $import = model(SocialImportModel::class)->find((int) $generated['social_import_id']);
         if (! empty($generated['content_id'])) {
+            $this->syncContentImage((int) $generated['content_id'], $import['media_url'] ?? null);
+
             return (int) $generated['content_id'];
         }
 
-        $import = model(SocialImportModel::class)->find((int) $generated['social_import_id']);
         $title = trim((string) $generated['draft_title']);
         $contentId = (int) model(ContentModel::class)->insert([
             'title'            => $title,
@@ -105,6 +111,44 @@ class SocialMediaImportService
         ]);
 
         return $contentId;
+    }
+
+    private function syncConvertedContentsImage(int $importId, string $mediaUrl): void
+    {
+        $drafts = model(SocialGeneratedContentModel::class)
+            ->where('social_import_id', $importId)
+            ->where('content_id IS NOT NULL', null, false)
+            ->findAll();
+
+        foreach ($drafts as $draft) {
+            $this->syncContentImage((int) $draft['content_id'], $mediaUrl);
+        }
+    }
+
+    private function syncContentImage(int $contentId, ?string $mediaUrl): void
+    {
+        if (! $mediaUrl) {
+            return;
+        }
+
+        $contentModel = model(ContentModel::class);
+        $content = $contentModel->find($contentId);
+        if (! $content) {
+            return;
+        }
+
+        $payload = [];
+        if (empty($content['featured_image'])) {
+            $payload['featured_image'] = $mediaUrl;
+        }
+        if (empty($content['og_image'])) {
+            $payload['og_image'] = $mediaUrl;
+        }
+
+        if ($payload !== []) {
+            $payload['updated_by'] = auth()->id();
+            $contentModel->update($contentId, $payload);
+        }
     }
 
     private function detectPlatform(string $url): string
