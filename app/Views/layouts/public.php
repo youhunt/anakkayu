@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="<?= $assetUrl('assets/anakkayu/css/page-polish.css') ?>">
     <link rel="stylesheet" href="<?= $assetUrl('assets/anakkayu/css/collection-polish.css') ?>">
     <link rel="stylesheet" href="<?= $assetUrl('assets/anakkayu/css/collection-production-fix.css') ?>">
+    <link rel="stylesheet" href="<?= $assetUrl('assets/anakkayu/css/home-production-polish.css') ?>">
     <?= $this->renderSection('head') ?>
 </head>
 <body>
