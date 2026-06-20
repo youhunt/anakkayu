@@ -21,6 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/anakkayu/css/site.css') ?>?v=20260620">
+    <link rel="stylesheet" href="<?= base_url('assets/anakkayu/css/polish.css') ?>?v=20260620b">
     <?= $this->renderSection('head') ?>
 </head>
 <body>
