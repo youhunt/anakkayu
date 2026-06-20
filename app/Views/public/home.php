@@ -36,6 +36,7 @@ $fallbackWood = base_url('assets/anakkayu/img/hero-workshop.png');
 $fallbackDetail = base_url('assets/anakkayu/img/craft-detail.png');
 $heroImage = $imageUrl($settings['hero_image'] ?? '', $fallbackHero);
 $aboutImage = $imageUrl($aboutPage['featured_image'] ?? ($portfolio[0]['featured_image'] ?? ''), $fallbackDetail);
+$whyImage = $imageUrl($portfolio[1]['featured_image'] ?? ($portfolio[0]['featured_image'] ?? ''), $fallbackDetail);
 $heroTitle = $settings['hero_title'] ?? 'Spesialis Mebel & Interior Kayu Berkualitas';
 $heroSubtitle = $settings['hero_subtitle'] ?? 'Selamat Datang di Anakkayu.id';
 $heroDescription = $settings['site_description'] ?? 'AnakKayu merancang dan memproduksi furniture, interior kayu, dekorasi, kemasan kayu, dan project custom dengan sentuhan natural yang hangat, presisi, dan berkelas.';
@@ -79,11 +80,27 @@ $productFallback = [
 <section class="ak-floating container ak-reveal" aria-label="Portfolio pilihan AnakKayu">
     <?php foreach (array_slice($portfolio ?: $floatingFallback, 0, 3) as $item): ?>
         <?php $isFallback = (($item['slug'] ?? '#') === '#'); ?>
-        <<?= $isFallback ? 'div' : 'a' ?> class="ak-float-card" <?= $isFallback ? '' : 'href="' . base_url('portfolio/' . $item['slug']) . '"' ?>>
+        <?php if ($isFallback): ?>
+            <div class="ak-float-card">
+        <?php else: ?>
+            <a class="ak-float-card" href="<?= base_url('portfolio/' . $item['slug']) ?>">
+        <?php endif ?>
             <img src="<?= esc($imageUrl($item['featured_image'] ?? '', $fallbackWood)) ?>" alt="<?= esc($item['title'] ?? 'Portfolio AnakKayu') ?>" loading="lazy">
             <span><?= esc($item['title'] ?? 'Portfolio AnakKayu') ?></span>
-        </<?= $isFallback ? 'div' : 'a' ?>>
+        <?php if ($isFallback): ?>
+            </div>
+        <?php else: ?>
+            </a>
+        <?php endif ?>
     <?php endforeach ?>
+</section>
+
+<section class="ak-modern-stats ak-reveal" aria-label="Keunggulan AnakKayu">
+    <div class="container">
+        <div class="ak-stat-card"><strong>01</strong><span>Konsultasi kebutuhan ruang dan ukuran secara rapi.</span></div>
+        <div class="ak-stat-card"><strong>02</strong><span>Material, finishing, dan detail dibuat sesuai fungsi.</span></div>
+        <div class="ak-stat-card"><strong>03</strong><span>Hasil akhir hangat, natural, berkelas, dan tahan lama.</span></div>
+    </div>
 </section>
 
 <section class="ak-about container ak-reveal" id="tentang">
@@ -103,6 +120,33 @@ $productFallback = [
     </div>
 </section>
 
+<section class="ak-process ak-reveal" aria-label="Alur kerja AnakKayu">
+    <div class="container">
+        <div class="ak-process-head">
+            <p class="ak-eyebrow dark">Alur Pengerjaan</p>
+            <h2>Tenang dari awal, jelas di setiap tahap.</h2>
+            <p>Kami ingin calon pelanggan merasa nyaman sejak konsultasi pertama. Karena itu alur kerja dibuat sederhana, transparan, dan mudah diikuti.</p>
+        </div>
+        <div class="ak-process-grid">
+            <article>
+                <span>01</span>
+                <h3>Konsultasi & Ukur Kebutuhan</h3>
+                <p>Ceritakan fungsi ruang, ukuran, gaya, budget, dan kebutuhan khusus. Kami bantu baca prioritasnya.</p>
+            </article>
+            <article>
+                <span>02</span>
+                <h3>Desain, Material & Penawaran</h3>
+                <p>Detail material, finishing, bentuk, dan estimasi biaya dirapikan agar keputusan lebih yakin.</p>
+            </article>
+            <article>
+                <span>03</span>
+                <h3>Produksi & Finishing</h3>
+                <p>Proses pengerjaan dijaga presisi, lalu hasil akhir dipastikan nyaman dilihat dan nyaman digunakan.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
 <section class="ak-why ak-reveal">
     <div class="container">
         <div class="ak-section-center">
@@ -114,7 +158,7 @@ $productFallback = [
                 <article><span>01</span><h3>Material Terpilih</h3><p>Kayu, finishing, dan hardware dipilih mengikuti fungsi ruang, karakter desain, dan durabilitas.</p></article>
                 <article><span>02</span><h3>Custom Presisi</h3><p>Ukuran, gaya, dan detail dibuat berdasarkan kebutuhan project, bukan sekadar template massal.</p></article>
             </div>
-            <img src="<?= esc($imageUrl($portfolio[1]['featured_image'] ?? '', $fallbackDetail)) ?>" alt="Karya interior kayu AnakKayu" loading="lazy">
+            <img src="<?= esc($whyImage) ?>" alt="Karya interior kayu AnakKayu" loading="lazy">
             <div class="ak-benefits">
                 <article><span>03</span><h3>Visual Premium</h3><p>Komposisi modern classic dengan aksen natural yang mudah dipadukan di rumah, cafe, kantor, atau toko.</p></article>
                 <article><span>04</span><h3>Inquiry Mudah</h3><p>Setiap produk, layanan, dan portfolio diarahkan ke WhatsApp dan form penawaran agar calon pelanggan cepat terlayani.</p></article>
