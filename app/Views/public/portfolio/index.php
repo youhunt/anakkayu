@@ -31,7 +31,7 @@ $fallback = 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=f
     <div class="container">
         <div class="ak-collection-head">
             <p class="ak-eyebrow dark">Karya Pilihan</p>
-            <h2>Portfolio dibuat lebih hidup agar calon pelanggan bisa merasa, bukan cuma melihat.</h2>
+            <h2>Karya terpilih untuk melihat karakter material, ruang, dan detail pengerjaan.</h2>
         </div>
 
         <div class="row g-4 ak-portfolio-flow">
