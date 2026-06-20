@@ -11,7 +11,7 @@ $fallback = 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=f
             <div>
                 <p class="ak-eyebrow">Layanan AnakKayu</p>
                 <h1><?= esc($title) ?></h1>
-                <p>Layanan kayu untuk rumah, bisnis, cafe, retail, kantor, dan kebutuhan industri yang perlu hasil rapi, tenang, dan berkarakter.</p>
+                <p>Layanan kayu untuk rumah, bisnis, cafe, retail, kantor, dan kebutuhan industri dengan hasil rapi, natural, dan tahan lama.</p>
                 <div class="ak-collection-tags">
                     <span>Konsultasi</span>
                     <span>Desain</span>
@@ -33,9 +33,9 @@ $fallback = 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=f
         <div class="ak-collection-head ak-collection-head-split">
             <div>
                 <p class="ak-eyebrow dark">Pilih Layanan</p>
-                <h2>Setiap layanan dibuat fleksibel, tidak kaku, mengikuti kebutuhan project.</h2>
+                <h2>Layanan fleksibel sesuai kebutuhan ruang dan project.</h2>
             </div>
-            <p>Kami bantu membaca kebutuhan dari fungsi, rasa ruang, budget, material, dan target pemakaian.</p>
+            <p>Kami bantu membaca fungsi, ukuran, material, dan finishing agar hasil akhirnya tetap nyaman digunakan.</p>
         </div>
 
         <div class="row g-4 ak-service-flow">
