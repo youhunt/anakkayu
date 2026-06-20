@@ -124,5 +124,4 @@ _modules/*
 
 /results/
 /phpunit.xml
-app/Views/public/partials/header.php
 app.zip
