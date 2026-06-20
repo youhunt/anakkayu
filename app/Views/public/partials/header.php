@@ -10,7 +10,12 @@
             <div id="akNav" class="collapse navbar-collapse justify-content-end">
                 <ul class="navbar-nav align-items-lg-center gap-lg-4">
                     <li class="nav-item"><a class="nav-link" href="<?= base_url() ?>">Home</a></li>
-                    <li class="nav-item"><a class="nav-link ak-nav-cta" href="<?= base_url('kontak') ?>">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url('tentang-kami') ?>">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url('produk') ?>">Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url('layanan') ?>">Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url('portfolio') ?>">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= base_url('artikel') ?>">Artikel</a></li>
+                    <li class="nav-item"><a class="nav-link ak-nav-cta" href="<?= base_url('kontak') ?>">Kontak</a></li>
                 </ul>
             </div>
         </div>
