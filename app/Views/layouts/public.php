@@ -35,6 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= $assetUrl('assets/anakkayu/css/site.css') ?>">
+    <link rel="stylesheet" href="<?= $assetUrl('assets/anakkayu/css/polish.css') ?>">
     <?= $this->renderSection('head') ?>
 </head>
 <body>
