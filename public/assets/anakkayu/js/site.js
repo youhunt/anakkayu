@@ -1,5 +1,6 @@
 const header = document.querySelector('.ak-header');
 const revealItems = document.querySelectorAll('.ak-reveal');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const toggleHeader = () => {
   if (!header) return;
@@ -9,7 +10,7 @@ const toggleHeader = () => {
 toggleHeader();
 window.addEventListener('scroll', toggleHeader, { passive: true });
 
-if ('IntersectionObserver' in window) {
+if (!reduceMotion && 'IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -31,3 +32,25 @@ document.querySelectorAll('.ak-copy').forEach((button) => {
     setTimeout(() => { button.textContent = 'Copy link'; }, 1600);
   });
 });
+
+document.querySelectorAll('#akNav .nav-link').forEach((link) => {
+  link.addEventListener('click', () => {
+    const nav = document.querySelector('#akNav.show');
+    if (nav && window.bootstrap) {
+      bootstrap.Collapse.getOrCreateInstance(nav).hide();
+    }
+  });
+});
+
+const hero = document.querySelector('.ak-hero');
+if (hero && !reduceMotion && window.matchMedia('(pointer: fine)').matches) {
+  hero.addEventListener('pointermove', (event) => {
+    const x = ((event.clientX / window.innerWidth) - .5) * 10;
+    const y = ((event.clientY / window.innerHeight) - .5) * 6;
+    hero.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+  });
+
+  hero.addEventListener('pointerleave', () => {
+    hero.style.backgroundPosition = 'center';
+  });
+}

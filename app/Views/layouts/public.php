@@ -18,9 +18,9 @@
     <meta name="twitter:image" content="<?= esc($meta['image']) ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<?= base_url('assets/anakkayu/css/site.css') ?>?v=20260619">
+    <link rel="stylesheet" href="<?= base_url('assets/anakkayu/css/site.css') ?>?v=20260620">
     <?= $this->renderSection('head') ?>
 </head>
 <body>
@@ -30,6 +30,6 @@
 </main>
 <?= $this->include('public/partials/footer') ?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="<?= base_url('assets/anakkayu/js/site.js') ?>?v=20260619"></script>
+<script src="<?= base_url('assets/anakkayu/js/site.js') ?>?v=20260620"></script>
 </body>
 </html>

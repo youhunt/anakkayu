@@ -31,29 +31,29 @@ $excerpt = static function (?string $text, int $limit = 170): string {
     return rtrim(substr($text, 0, $limit), " \t\n\r\0\x0B.,") . '...';
 };
 
-$fallbackHero = 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=2200&q=85';
-$fallbackWood = 'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1400&q=82';
-$fallbackDetail = 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=82';
+$fallbackHero = base_url('assets/anakkayu/img/hero-workshop.png');
+$fallbackWood = base_url('assets/anakkayu/img/hero-workshop.png');
+$fallbackDetail = base_url('assets/anakkayu/img/craft-detail.png');
 $heroImage = $imageUrl($settings['hero_image'] ?? '', $fallbackHero);
 $aboutImage = $imageUrl($aboutPage['featured_image'] ?? ($portfolio[0]['featured_image'] ?? ''), $fallbackDetail);
 $heroTitle = $settings['hero_title'] ?? 'Spesialis Mebel & Interior Kayu Berkualitas';
 $heroSubtitle = $settings['hero_subtitle'] ?? 'Selamat Datang di Anakkayu.id';
 $heroDescription = $settings['site_description'] ?? 'AnakKayu merancang dan memproduksi furniture, interior kayu, dekorasi, kemasan kayu, dan project custom dengan sentuhan natural yang hangat, presisi, dan berkelas.';
-$cinematicVideo = $settings['cinematic_video_url'] ?? 'https://anakkayu.id/wp-content/uploads/2025/02/video2.mp4';
+$cinematicVideo = trim((string) ($settings['cinematic_video_url'] ?? ''));
 $aboutTitle = $aboutPage['title'] ?? 'Membentuk ruang yang hangat, natural, dan dibuat untuk bertahan lama.';
 $aboutBody = $excerpt($aboutPage['body'] ?? 'Kami membantu pemilik rumah, cafe, kantor, brand retail, hingga kebutuhan industri menghadirkan elemen kayu yang fungsional sekaligus berkarakter. Dari konsultasi, desain, produksi, finishing, sampai instalasi, setiap tahap dibuat transparan, rapi, dan terukur.', 440);
 $floatingFallback = [
-    ['title' => 'Custom Cabinet', 'featured_image' => 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=900&q=80', 'slug' => '#'],
-    ['title' => 'Interior Kayu', 'featured_image' => 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80', 'slug' => '#'],
-    ['title' => 'Dekorasi Natural', 'featured_image' => 'https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?auto=format&fit=crop&w=900&q=80', 'slug' => '#'],
+    ['title' => 'Custom Furniture', 'featured_image' => $fallbackHero, 'slug' => '#'],
+    ['title' => 'Detail Kerajinan', 'featured_image' => $fallbackDetail, 'slug' => '#'],
+    ['title' => 'Interior Kayu', 'featured_image' => $fallbackHero, 'slug' => '#'],
 ];
 $galleryItems = array_slice(array_values(array_filter($portfolio, static fn ($item): bool => ! empty($item['featured_image']))), 0, 5);
-$galleryFallback = [
-    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80',
-    'https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80',
+$galleryFallback = [$fallbackHero, $fallbackDetail, $fallbackHero, $fallbackDetail, $fallbackHero];
+$productFallback = [
+    ['product_name' => 'Meja Kayu Solid', 'summary' => 'Meja makan natural dengan proporsi yang tenang dan detail sambungan presisi.', 'slug' => '#', 'featured_image' => $fallbackHero],
+    ['product_name' => 'Kabinet Custom', 'summary' => 'Penyimpanan fungsional yang dirancang mengikuti ukuran dan ritme ruang.', 'slug' => '#', 'featured_image' => $fallbackDetail],
+    ['product_name' => 'Kursi Kerajinan', 'summary' => 'Bentuk ergonomis, sentuhan halus, dan karakter kayu yang tetap terasa.', 'slug' => '#', 'featured_image' => $fallbackHero],
+    ['product_name' => 'Panel Interior', 'summary' => 'Aksen kayu hangat untuk rumah, cafe, kantor, dan ruang retail.', 'slug' => '#', 'featured_image' => $fallbackDetail],
 ];
 ?>
 
@@ -72,6 +72,7 @@ $galleryFallback = [
             <span>Interior kayu</span>
             <span>Project by request</span>
         </div>
+        <a class="ak-scroll-cue" href="#tentang" aria-label="Lanjut ke bagian tentang AnakKayu"><span></span>Jelajahi</a>
     </div>
 </section>
 
@@ -85,7 +86,7 @@ $galleryFallback = [
     <?php endforeach ?>
 </section>
 
-<section class="ak-about container ak-reveal">
+<section class="ak-about container ak-reveal" id="tentang">
     <div class="ak-about-copy">
         <p class="ak-eyebrow dark">Tentang AnakKayu</p>
         <h2><?= esc($aboutTitle) ?></h2>
@@ -113,7 +114,7 @@ $galleryFallback = [
                 <article><span>01</span><h3>Material Terpilih</h3><p>Kayu, finishing, dan hardware dipilih mengikuti fungsi ruang, karakter desain, dan durabilitas.</p></article>
                 <article><span>02</span><h3>Custom Presisi</h3><p>Ukuran, gaya, dan detail dibuat berdasarkan kebutuhan project, bukan sekadar template massal.</p></article>
             </div>
-            <img src="<?= esc($imageUrl($portfolio[1]['featured_image'] ?? '', 'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=900&q=80')) ?>" alt="Karya interior kayu AnakKayu" loading="lazy">
+            <img src="<?= esc($imageUrl($portfolio[1]['featured_image'] ?? '', $fallbackDetail)) ?>" alt="Karya interior kayu AnakKayu" loading="lazy">
             <div class="ak-benefits">
                 <article><span>03</span><h3>Visual Premium</h3><p>Komposisi modern classic dengan aksen natural yang mudah dipadukan di rumah, cafe, kantor, atau toko.</p></article>
                 <article><span>04</span><h3>Inquiry Mudah</h3><p>Setiap produk, layanan, dan portfolio diarahkan ke WhatsApp dan form penawaran agar calon pelanggan cepat terlayani.</p></article>
@@ -131,12 +132,12 @@ $galleryFallback = [
         </div>
         <div class="row g-4">
             <?php foreach ($services ?: [
-                ['service_name' => 'Furniture Custom', 'summary' => 'Meja, kabinet, rak, dan furniture built-in.', 'slug' => 'furniture-custom'],
-                ['service_name' => 'Interior Kayu', 'summary' => 'Panel, backdrop, partisi, dan aksen ruang.', 'slug' => 'interior-kayu'],
-                ['service_name' => 'Restorasi', 'summary' => 'Perbaikan dan refinishing furniture lama.', 'slug' => 'restorasi'],
+                ['service_name' => 'Furniture Custom', 'summary' => 'Meja, kabinet, rak, dan furniture built-in.', 'slug' => '#'],
+                ['service_name' => 'Interior Kayu', 'summary' => 'Panel, backdrop, partisi, dan aksen ruang.', 'slug' => '#'],
+                ['service_name' => 'Restorasi', 'summary' => 'Perbaikan dan refinishing furniture lama.', 'slug' => '#'],
             ] as $index => $service): ?>
                 <div class="col-md-6 col-xl-4">
-                    <a class="ak-service-card" href="<?= base_url('layanan/' . ($service['slug'] ?? '#')) ?>">
+                    <a class="ak-service-card" href="<?= ($service['slug'] ?? '#') === '#' ? base_url('layanan') : base_url('layanan/' . $service['slug']) ?>">
                         <span><?= str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT) ?></span>
                         <h3><?= esc($service['service_name']) ?></h3>
                         <p><?= esc($service['summary'] ?? '') ?></p>
@@ -162,14 +163,18 @@ $galleryFallback = [
 </section>
 
 <section class="ak-cinematic ak-reveal" aria-label="AnakKayu cinematic story">
+    <?php if ($cinematicVideo !== ''): ?>
     <video class="ak-cinematic-video" autoplay muted loop playsinline preload="metadata">
         <source src="<?= esc($cinematicVideo) ?>" type="video/mp4">
     </video>
+    <?php else: ?>
+        <div class="ak-cinematic-image" style="background-image:url('<?= esc($fallbackDetail) ?>')"></div>
+    <?php endif ?>
     <div class="ak-cinematic-overlay"></div>
     <div class="container ak-cinematic-content">
         <p>anakkayu.id</p>
-        <h2>Beautiful Art of Kemiri</h2>
-        <span>Crafted by AnakKayu</span>
+        <h2>Seni Kayu yang Tenang</h2>
+        <span>Dikerjakan perlahan, dibuat untuk menemani lebih lama.</span>
         <a class="ak-btn ak-btn-gold" href="<?= base_url('inquiry') ?>">Mulai Project</a>
     </div>
 </section>
@@ -197,7 +202,6 @@ $galleryFallback = [
 </section>
 <?php endif ?>
 
-<?php if (! empty($products)): ?>
 <section class="ak-products ak-grid-list ak-reveal">
     <div class="container">
         <div class="ak-section-head">
@@ -206,9 +210,9 @@ $galleryFallback = [
             <a class="ak-link" href="<?= base_url('produk') ?>">Lihat katalog produk</a>
         </div>
         <div class="row g-4">
-            <?php foreach ($products as $item): ?>
+            <?php foreach ($products ?: $productFallback as $item): ?>
                 <div class="col-md-6 col-xl-3">
-                    <a class="ak-product-card" href="<?= base_url('produk/' . $item['slug']) ?>">
+                    <a class="ak-product-card" href="<?= ($item['slug'] ?? '#') === '#' ? base_url('produk') : base_url('produk/' . $item['slug']) ?>">
                         <img src="<?= esc($imageUrl($item['featured_image'] ?? '', $fallbackWood)) ?>" alt="<?= esc($item['product_name']) ?>" loading="lazy">
                         <h3><?= esc($item['product_name']) ?></h3>
                         <p><?= esc($excerpt($item['summary'] ?? $item['description'] ?? '', 96)) ?></p>
@@ -218,7 +222,6 @@ $galleryFallback = [
         </div>
     </div>
 </section>
-<?php endif ?>
 
 <?php if (! empty($contents)): ?>
 <section class="ak-journal container ak-reveal">
@@ -231,7 +234,7 @@ $galleryFallback = [
         <?php foreach ($contents as $item): ?>
             <div class="col-md-4">
                 <a class="ak-journal-card" href="<?= base_url('artikel/' . $item['slug']) ?>">
-                    <img src="<?= esc($imageUrl($item['featured_image'] ?? '', 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=800&q=80')) ?>" alt="<?= esc($item['title']) ?>" loading="lazy">
+                    <img src="<?= esc($imageUrl($item['featured_image'] ?? '', $fallbackDetail)) ?>" alt="<?= esc($item['title']) ?>" loading="lazy">
                     <div>
                         <span><?= esc(ak_date($item['published_at'] ?? $item['created_at'] ?? null)) ?></span>
                         <h3><?= esc($item['title']) ?></h3>
