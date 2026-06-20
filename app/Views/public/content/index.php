@@ -17,7 +17,7 @@
             </div>
             <aside>
                 <span>Editorial</span>
-                <strong>Konten dibuat untuk membantu pelanggan memahami kayu, ruang, dan keputusan desain.</strong>
+                <strong>Catatan singkat untuk membantu memahami material, fungsi ruang, dan keputusan desain.</strong>
                 <a href="<?= base_url('kontak') ?>">Kirim pertanyaan</a>
             </aside>
         </div>
@@ -29,7 +29,7 @@
         <div class="ak-collection-head ak-collection-head-split">
             <div>
                 <p class="ak-eyebrow dark">Bacaan Terbaru</p>
-                <h2>Artikel dibuat lebih editorial, tidak sekadar kartu seragam.</h2>
+                <h2>Catatan material dan inspirasi ruang dari AnakKayu.</h2>
             </div>
             <p>Pilih inspirasi yang paling dekat dengan kebutuhan rumah, bisnis, atau project custom Anda.</p>
         </div>
