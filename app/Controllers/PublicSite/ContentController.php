@@ -25,7 +25,7 @@ class ContentController extends BasePublicController
         return $this->render('public/content/show', [
             'item' => $item,
             'share' => ak_share_links(current_url(), $item['title']),
-            'meta' => ['title' => $item['meta_title'] ?: $item['title'], 'description' => $item['meta_description'] ?: $item['summary'], 'keywords' => $item['meta_keywords'] ?? '', 'image' => $item['og_image'] ?: ($item['featured_image'] ?: null), 'type' => 'article'],
+            'meta' => ['title' => $item['meta_title'] ?: $item['title'], 'description' => $item['meta_description'] ?: $item['summary'], 'keywords' => $item['meta_keywords'] ?? '', 'image' => $item['og_image'] ?: ak_content_image($item), 'type' => 'article'],
         ]);
     }
 }

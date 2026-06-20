@@ -1,0 +1,19 @@
+{
+  "name": "AnakKayu",
+  "short_name": "AnakKayu",
+  "icons": [
+    {
+      "src": "/assets/anakkayu/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/anakkayu/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#222126",
+  "background_color": "#d0bfaa",
+  "display": "standalone"
+}

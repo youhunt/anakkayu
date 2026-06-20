@@ -1,0 +1,745 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --ak-dark: #111111;
+    --ak-charcoal: #191919;
+    --ak-muted: #777777;
+    --ak-light: #f4f4f4;
+    --ak-gold: #ffd13f;
+    --ak-white: #ffffff;
+    --ak-radius: 22px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--ak-dark);
+    background: #ffffff;
+    font-family: "Poppins", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.ak-container {
+    width: min(1120px, calc(100% - 48px));
+    margin: 0 auto;
+}
+
+/* HEADER */
+.ak-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 30;
+    padding: 22px 0;
+}
+
+.ak-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ak-logo img {
+    width: 142px;
+    height: auto;
+}
+
+.ak-menu {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+}
+
+.ak-menu a {
+    position: relative;
+    color: #ffffff;
+    font-family: "Oswald", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+}
+
+.ak-menu a.active {
+    color: var(--ak-gold);
+}
+
+.ak-menu a.active::after,
+.ak-menu a:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 2px;
+    background: var(--ak-gold);
+}
+
+/* HERO */
+.ak-hero {
+    position: relative;
+    min-height: 675px;
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.ak-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at center, rgba(0,0,0,.12), rgba(0,0,0,.68)),
+        linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.75));
+}
+
+.ak-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+    padding-top: 20px;
+}
+
+.ak-eyebrow,
+.ak-small-title {
+    margin: 0 0 10px;
+    font-family: "Oswald", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.ak-hero h1 {
+    width: min(760px, 92vw);
+    margin: 0 auto;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(34px, 6.1vw, 58px);
+    font-weight: 700;
+    line-height: 1.18;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+}
+
+/* FLOATING CARDS */
+.ak-floating-wrap {
+    position: relative;
+    z-index: 5;
+    margin-top: -86px;
+    padding-bottom: 70px;
+}
+
+.ak-floating-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    align-items: end;
+}
+
+.ak-float-card {
+    position: relative;
+    height: 250px;
+    background: #ddd;
+    overflow: hidden;
+    box-shadow: 0 16px 36px rgba(0,0,0,.13);
+}
+
+.ak-float-card.ak-middle {
+    transform: translateY(20px);
+}
+
+.ak-float-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ak-float-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,.35), transparent 55%);
+}
+
+.ak-float-card span {
+    position: absolute;
+    left: 50%;
+    bottom: 24px;
+    z-index: 2;
+    transform: translateX(-50%);
+    color: #ffffff;
+    font-size: 11px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+}
+
+/* SECTIONS */
+.ak-section {
+    padding: 100px 0;
+}
+
+.ak-section-heading {
+    width: min(760px, 100%);
+    margin: 0 auto 52px;
+    text-align: center;
+}
+
+.ak-section-heading h2,
+.ak-about-text h2 {
+    margin: 0 0 20px;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700;
+    line-height: 1.18;
+    color: #3a3a3a;
+}
+
+.ak-section-heading p,
+.ak-about-text p {
+    margin: 0 auto 18px;
+    color: #676767;
+}
+
+/* ABOUT */
+.ak-about {
+    padding-top: 40px;
+}
+
+.ak-about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 86px;
+    align-items: center;
+}
+
+.ak-about-text {
+    text-align: center;
+}
+
+.ak-about-text .ak-small-title {
+    color: #3b3b3b;
+}
+
+.ak-about-image {
+    position: relative;
+}
+
+.ak-about-image::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 100%;
+    height: 100%;
+    border-top: 8px solid var(--ak-gold);
+    border-right: 8px solid var(--ak-gold);
+    z-index: 0;
+}
+
+.ak-about-image img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 610px;
+    object-fit: cover;
+}
+
+/* WHY */
+.ak-why {
+    padding-top: 60px;
+}
+
+.ak-why-grid {
+    display: grid;
+    grid-template-columns: 1fr 310px 1fr;
+    gap: 28px;
+    align-items: center;
+}
+
+.ak-benefit-card {
+    min-height: 360px;
+    padding: 48px 34px;
+    background: #f0f0f0;
+    border-radius: 20px;
+    display: grid;
+    align-content: center;
+    gap: 38px;
+}
+
+.ak-benefit-item {
+    text-align: center;
+}
+
+.ak-benefit-item h3 {
+    margin: 8px 0 8px;
+    font-family: "Oswald", sans-serif;
+    font-size: 16px;
+    color: #222222;
+}
+
+.ak-benefit-item p {
+    margin: 0;
+    font-size: 13px;
+    color: #777777;
+}
+
+.ak-icon {
+    font-size: 28px;
+    color: #111111;
+}
+
+.ak-why-image img {
+    width: 100%;
+    height: 405px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+/* SERVICES */
+.ak-services {
+    padding: 96px 0 105px;
+    background: var(--ak-gold);
+}
+
+.ak-services .ak-section-heading {
+    margin-bottom: 55px;
+}
+
+.ak-services .ak-section-heading h2 {
+    color: #333333;
+}
+
+.ak-services .ak-section-heading p {
+    color: #3e3e3e;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.ak-service-grid {
+    width: min(840px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 52px 80px;
+}
+
+.ak-service-item {
+    text-align: left;
+}
+
+.ak-service-icon {
+    margin-bottom: 14px;
+    font-size: 32px;
+    line-height: 1;
+    color: #111111;
+}
+
+.ak-service-item h3 {
+    margin: 0 0 10px;
+    font-family: "Oswald", sans-serif;
+    font-size: 17px;
+    color: #1c1c1c;
+}
+
+.ak-service-item p {
+    margin: 0;
+    color: #5b4b11;
+    font-size: 13px;
+}
+
+/* GALLERY STRIP */
+.ak-gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.ak-gallery-strip img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+/* CINEMATIC */
+.ak-cinematic {
+    padding: 115px 0;
+    background: #ffffff;
+}
+
+.ak-cinematic-box {
+    position: relative;
+    width: min(930px, 100%);
+    min-height: 395px;
+    margin: 0 auto;
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.ak-cinematic-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.34);
+}
+
+.ak-cinematic-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #ffffff;
+}
+
+.ak-cinematic-content p {
+    margin: 0 0 22px;
+    font-size: 11px;
+    letter-spacing: .2em;
+}
+
+.ak-cinematic-content h2 {
+    margin: 0 0 38px;
+    font-family: "Oswald", sans-serif;
+    font-size: clamp(24px, 5vw, 42px);
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.ak-cinematic-content span {
+    font-family: cursive;
+    font-size: 20px;
+}
+
+/* PORTFOLIO */
+.ak-portfolio {
+    background: #eeeeee;
+}
+
+.ak-portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+
+.ak-portfolio-card {
+    background: #ffffff;
+    padding-bottom: 18px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.04);
+}
+
+.ak-portfolio-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.ak-portfolio-card a {
+    display: block;
+    margin-top: 18px;
+    text-align: center;
+    font-family: "Oswald", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+/* FOOTER */
+.ak-footer {
+    padding: 86px 0 74px;
+    background: #111111;
+    color: #ffffff;
+}
+
+.ak-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr 1.35fr;
+    gap: 90px;
+}
+
+.ak-footer h3 {
+    margin: 0 0 20px;
+    font-family: "Oswald", sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.ak-footer h4 {
+    margin: 0 0 14px;
+    font-family: "Oswald", sans-serif;
+    font-size: 14px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.ak-footer p {
+    margin: 0 0 16px;
+    color: #d5d5d5;
+    font-size: 13px;
+}
+
+.ak-social {
+    display: flex;
+    gap: 9px;
+    margin-top: 16px;
+}
+
+.ak-social a {
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    background: var(--ak-gold);
+    color: #111111;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+    .ak-hero {
+        min-height: 610px;
+    }
+
+    .ak-floating-grid,
+    .ak-about-grid,
+    .ak-why-grid,
+    .ak-portfolio-grid,
+    .ak-footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ak-float-card.ak-middle {
+        transform: none;
+    }
+
+    .ak-about-grid {
+        gap: 48px;
+    }
+
+    .ak-about-image img {
+        height: 520px;
+    }
+
+    .ak-benefit-card {
+        min-height: auto;
+    }
+
+    .ak-why-image {
+        order: -1;
+    }
+
+    .ak-service-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 42px;
+    }
+
+    .ak-gallery-strip {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .ak-container {
+        width: min(100% - 30px, 1120px);
+    }
+
+    .ak-header {
+        padding: 16px 0;
+    }
+
+    .ak-logo img {
+        width: 112px;
+    }
+
+    .ak-menu {
+        gap: 18px;
+    }
+
+    .ak-menu a {
+        font-size: 10px;
+    }
+
+    .ak-hero {
+        min-height: 570px;
+    }
+
+    .ak-hero h1 {
+        letter-spacing: .14em;
+        font-size: 32px;
+    }
+
+    .ak-floating-wrap {
+        margin-top: -55px;
+        padding-bottom: 45px;
+    }
+
+    .ak-floating-grid {
+        gap: 16px;
+    }
+
+    .ak-float-card {
+        height: 210px;
+    }
+
+    .ak-section {
+        padding: 70px 0;
+    }
+
+    .ak-about {
+        padding-top: 30px;
+    }
+
+    .ak-about-image img {
+        height: 430px;
+    }
+
+    .ak-service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ak-gallery-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .ak-gallery-strip img {
+        height: 240px;
+    }
+
+    .ak-cinematic {
+        padding: 0;
+        background: #ffffff;
+    }
+
+    .ak-cinematic-full {
+        width: 100%;
+        margin: 0;
+    }
+
+    .ak-cinematic-box {
+        position: relative;
+        width: 100%;
+        height: 560px;
+        margin: 0;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        background: #111;
+    }
+
+    .ak-cinematic-video-box {
+        position: relative;
+    }
+
+    .ak-cinematic-video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 35%;
+        z-index: 0;
+    }
+
+    .ak-cinematic-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+            radial-gradient(circle at center, rgba(0,0,0,.10), rgba(0,0,0,.45)),
+            linear-gradient(to bottom, rgba(0,0,0,.30), rgba(0,0,0,.62));
+        z-index: 1;
+    }
+
+    .ak-cinematic-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        padding: 40px 24px;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    .ak-cinematic-content p {
+        margin: 0 0 22px;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: .28em;
+        text-transform: lowercase;
+    }
+
+    .ak-cinematic-content h2 {
+        margin: 0 0 34px;
+        font-family: "Oswald", sans-serif;
+        font-size: clamp(36px, 6vw, 72px);
+        font-weight: 500;
+        line-height: 1.35;
+        letter-spacing: .45em;
+        text-transform: uppercase;
+        color: #ffffff;
+    }
+
+    .ak-cinematic-content span {
+        display: block;
+        font-size: 24px;
+        font-style: italic;
+        color: #ffffff;
+    }
+
+    @media (max-width: 992px) {
+        .ak-cinematic-box {
+            height: 460px;
+        }
+
+        .ak-cinematic-content h2 {
+            font-size: 42px;
+            letter-spacing: .28em;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .ak-cinematic-box {
+            height: 360px;
+        }
+
+        .ak-cinematic-content h2 {
+            font-size: 26px;
+            letter-spacing: .18em;
+        }
+
+        .ak-cinematic-content span {
+            font-size: 18px;
+        }
+    }
+
+    .ak-portfolio-card img {
+        height: 240px;
+    }
+
+    .ak-footer {
+        padding: 65px 0;
+    }
+
+    .ak-footer-grid {
+        gap: 42px;
+    }
+}

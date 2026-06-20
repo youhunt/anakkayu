@@ -43,7 +43,7 @@ function ak_meta(array $data = []): array
 {
     $title = $data['title'] ?? ak_setting('default_meta_title', 'AnakKayu.id - Spesialis Mebel & Interior Kayu');
     $description = $data['description'] ?? ak_setting('default_meta_description', 'AnakKayu menghadirkan mebel, interior kayu, dekorasi, dan layanan custom dengan karakter premium artisan.');
-    $image = ! empty($data['image']) ? $data['image'] : base_url('assets/anakkayu/img/og-default.jpg');
+    $image = ! empty($data['image']) ? $data['image'] : ak_default_content_image(['slug' => $title]);
 
     return [
         'title'       => $title,
@@ -53,6 +53,33 @@ function ak_meta(array $data = []): array
         'type'        => $data['type'] ?? 'website',
         'keywords'    => $data['keywords'] ?? '',
     ];
+}
+
+function ak_default_content_image(array $item = []): string
+{
+    $images = [
+        'assets/anakkayu/card-1.jpg',
+        'assets/anakkayu/card-2.jpg',
+        'assets/anakkayu/card-3.jpg',
+        'assets/anakkayu/gallery-1.jpg',
+        'assets/anakkayu/gallery-2.jpg',
+        'assets/anakkayu/gallery-3.jpg',
+        'assets/anakkayu/portfolio-1.jpg',
+        'assets/anakkayu/portfolio-3.jpg',
+        'assets/anakkayu/banner.jpg',
+    ];
+
+    $seed = (string) ($item['slug'] ?? $item['title'] ?? $item['id'] ?? 'anakkayu');
+    $index = abs((int) crc32($seed)) % count($images);
+
+    return base_url($images[$index]);
+}
+
+function ak_content_image(array $item): string
+{
+    return ! empty($item['featured_image'])
+        ? $item['featured_image']
+        : ak_default_content_image($item);
 }
 
 function ak_share_links(string $url, string $title): array
