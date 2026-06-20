@@ -11,7 +11,7 @@ $fallback = 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=form
             <div>
                 <p class="ak-eyebrow">Katalog Produk</p>
                 <h1><?= esc($title) ?></h1>
-                <p>Furniture dan elemen interior kayu yang dibuat untuk ruang yang hangat, rapi, fungsional, dan enak dipandang setiap hari.</p>
+                <p>Furniture dan elemen interior kayu untuk rumah, bisnis, dan kebutuhan ruang yang ingin tampil hangat, rapi, dan berkarakter.</p>
                 <div class="ak-collection-tags">
                     <span>Furniture custom</span>
                     <span>Interior kayu</span>
@@ -20,7 +20,7 @@ $fallback = 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=form
             </div>
             <aside>
                 <span>Produk AnakKayu</span>
-                <strong>Material natural, bentuk bersih, dan detail yang terasa.</strong>
+                <strong>Material natural, bentuk bersih, dan detail yang nyaman digunakan.</strong>
                 <a href="<?= ak_whatsapp_link('Halo AnakKayu, saya ingin tanya katalog produk.') ?>" target="_blank" rel="noopener">Tanya katalog</a>
             </aside>
         </div>
@@ -31,7 +31,7 @@ $fallback = 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=form
     <div class="container">
         <div class="ak-collection-head">
             <p class="ak-eyebrow dark">Pilihan Produk</p>
-            <h2>Katalog yang tidak hanya tampil, tapi membantu calon pelanggan membayangkan ruangnya.</h2>
+            <h2>Produk pilihan untuk ruang yang lebih hangat dan fungsional.</h2>
         </div>
 
         <div class="row g-4 ak-masonry-soft">
