@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="<?= $assetUrl('assets/anakkayu/css/site.css') ?>">
     <link rel="stylesheet" href="<?= $assetUrl('assets/anakkayu/css/polish.css') ?>">
     <link rel="stylesheet" href="<?= $assetUrl('assets/anakkayu/css/hero-menu-fix.css') ?>">
+    <link rel="stylesheet" href="<?= $assetUrl('assets/anakkayu/css/page-polish.css') ?>">
     <?= $this->renderSection('head') ?>
 </head>
 <body>
